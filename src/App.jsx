@@ -19,8 +19,6 @@ function App() {
     JSON.parse(localStorage.getItem("watchedMovies"))
   );
 
-  console.log(KEY);
-
   useEffect(() => {
     localStorage.setItem("watchedMovies", JSON.stringify(watched));
   }, [watched]);
