@@ -7,7 +7,7 @@ import SelectedListOfItems from "./Components/List";
 import Loading from "./Components/Loading";
 import ErrorMessage from "./Components/ErrorMessage";
 
-const KEY = import.meta.env.VITE_APIKEY;
+const KEY = import.meta.env.VITE_API_KEY;
 
 function App() {
   const [data, setData] = useState([]);
@@ -18,6 +18,8 @@ function App() {
   const [watched, setWatched] = useState(
     JSON.parse(localStorage.getItem("watchedMovies"))
   );
+
+  console.log(KEY);
 
   useEffect(() => {
     localStorage.setItem("watchedMovies", JSON.stringify(watched));

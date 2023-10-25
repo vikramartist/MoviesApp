@@ -89,6 +89,8 @@ export function SideBar({
   const [isLoading, setIsLoading] = useState(false);
   const isWatched = watched.map((movie) => movie.imdbID).includes(data);
 
+  const KEY = api;
+
   const handleAdd = () => {
     const newWatchedMovie = {
       imdbID: data,
@@ -124,7 +126,7 @@ export function SideBar({
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${api}&i=${data}`
+          `http://www.omdbapi.com/?apikey=${KEY}&i=${data}`
         );
         const details = await res.json();
         setCurrMovie(details);
