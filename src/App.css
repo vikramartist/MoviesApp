@@ -1,0 +1,3 @@
+.container-snap::-webkit-scrollbar {
+  display: none;
+}

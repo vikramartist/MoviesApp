@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .movie {
+    @apply flex justify-center items-center bg-transparent h-[10rem] w-[10rem] sm:w-[6rem] sm:h-[8rem] ssm:w-[4rem] ssm:h-[5.3rem] shadow-lg shadow-black hover:cursor-pointer hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .list {
+    @apply flex flex-col items-center gap-2 justify-start absolute top-16 h-[35rem] lg:w-[50%] md:w-[60%] sm:w-[70%] ssm:w-[90%] bg-blue-950 z-10 rounded-lg overflow-y-scroll;
+  }
+
+  .active {
+    @apply grayscale shadow-xl;
+  }
+
+  .sidebar-top-display {
+    display: none;
+  }
+
+  .sidebar {
+    @apply flex h-full flex-wrap p-1 bg-gray-100 lg:w-[30rem] md:w-[30rem] sm:w-[30rem] ssm:w-[20rem] ssm:justify-center ssm:items-center;
+  }
+
+  .movie-list {
+    @apply w-full h-full p-1 flex flex-wrap content-start justify-center gap-y-8 gap-x-1 ssm:gap-y-6 bg-orange-300 rounded-lg shadow-black shadow-md overflow-y-scroll;
+  }
+
+  .sidebar-icon {
+    @apply text-slate-200 text-xl cursor-pointer;
+  }
+
+  .main {
+    @apply h-full w-full bg-slate-400 flex;
+  }
+
+  .navbar {
+    @apply relative flex justify-between items-center bg-blue-500 px-6 py-3 w-full flex-wrap;
+  }
+
+  .navbar-logo {
+    @apply flex px-1 items-center gap-1 border rounded-xl border-transparent bg-red-100 hover:bg-red-400;
+  }
+
+  .app {
+    @apply bg-gray-500 w-full h-full p-0 m-0;
+  }
+}
