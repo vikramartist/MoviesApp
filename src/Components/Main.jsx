@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Loading from "./Loading";
 
 /* eslint-disable react/prop-types */
-const Main = ({ movies, isCartSelected, onWatched, watched }) => {
+const Main = ({ movies, isCartSelected, onWatched, watched, api }) => {
   const [selectedID, setSelectedID] = useState(null);
 
   const handleSelection = (id) => {
@@ -27,6 +27,7 @@ const Main = ({ movies, isCartSelected, onWatched, watched }) => {
           onWatched={onWatched}
           watched={watched}
           closeMovie={handleCloseMovie}
+          api={api}
         />
       )}
     </main>
@@ -76,7 +77,14 @@ export function Movie({ movie, onSelect, selectMovie }) {
   );
 }
 
-export function SideBar({ data, onClose, onWatched, watched, closeMovie }) {
+export function SideBar({
+  data,
+  onClose,
+  onWatched,
+  watched,
+  closeMovie,
+  api,
+}) {
   const [currMovie, setCurrMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const isWatched = watched.map((movie) => movie.imdbID).includes(data);
@@ -116,7 +124,7 @@ export function SideBar({ data, onClose, onWatched, watched, closeMovie }) {
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=c73a1211&i=${data}`
+          `http://www.omdbapi.com/?apikey=${api}&i=${data}`
         );
         const details = await res.json();
         setCurrMovie(details);

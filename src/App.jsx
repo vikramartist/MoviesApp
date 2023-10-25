@@ -7,6 +7,8 @@ import SelectedListOfItems from "./Components/List";
 import Loading from "./Components/Loading";
 import ErrorMessage from "./Components/ErrorMessage";
 
+const KEY = import.meta.env.VITE_APIKEY;
+
 function App() {
   const [data, setData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -29,7 +31,7 @@ function App() {
           setIsLoading(true);
           setError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=c73a1211&s=${searchInput}`,
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${searchInput}`,
             { signal: controller.signal }
           );
 
@@ -93,6 +95,7 @@ function App() {
           isCartSelected={selectCart}
           onWatched={handleListAddition}
           watched={watched}
+          api={KEY}
         />
       )}
       {error && <ErrorMessage message={error} />}
