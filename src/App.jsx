@@ -16,7 +16,7 @@ function App() {
   const [selectCart, setSelectCart] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [watched, setWatched] = useLocalStorageState([], "watched");
+  const [watched, setWatched] = useLocalStorageState([], "watchedMovies");
 
   useEffect(
     function () {
@@ -81,7 +81,7 @@ function App() {
         Search={searchInput}
         count={data}
         onSelectCart={setSelectCart}
-        listCount={watched.length}
+        listCount={watched?.length}
       />
       {isLoading && <Loading />}
       {!isLoading && !error && (

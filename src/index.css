@@ -8,7 +8,7 @@
   }
 
   .list {
-    @apply flex flex-col items-center gap-2 justify-start absolute top-16 h-[35rem] lg:w-[50%] md:w-[60%] sm:w-[70%] ssm:w-[90%] bg-blue-950 z-10 rounded-lg overflow-y-scroll;
+    @apply flex flex-col items-center gap-2 justify-start absolute top-16 h-[80%] lg:w-[50%] md:w-[60%] sm:w-[70%] ssm:w-[90%] bg-blue-950 z-10 rounded-lg overflow-y-scroll;
   }
 
   .active {

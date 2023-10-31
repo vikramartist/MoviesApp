@@ -88,7 +88,7 @@ export function SideBar({
 }) {
   const [currMovie, setCurrMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const isWatched = watched.map((movie) => movie.imdbID).includes(data);
+  const isWatched = watched?.map((movie) => movie.imdbID).includes(data);
 
   const KEY = api;
 
@@ -121,7 +121,7 @@ export function SideBar({
       }
       getMovieDetails();
     },
-    [data]
+    [data, KEY]
   );
 
   useEffect(() => {

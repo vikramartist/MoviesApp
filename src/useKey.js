@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 
-import(useEffect);
-
 export function useKey(key, action) {
   useEffect(
     function () {
