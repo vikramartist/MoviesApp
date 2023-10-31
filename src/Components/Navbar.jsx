@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 /* eslint-disable react/prop-types */
 const Navbar = ({ onSearch, count, onSelectCart, search, listCount }) => {
   return (
@@ -28,6 +30,23 @@ export function Logo() {
 }
 
 export function Search({ onSearch, search }) {
+  const inputEl = useRef(null);
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (document.activeElement === inputEl.current) return;
+        if (e.code === "Enter") {
+          inputEl.current.focus();
+          onSearch("");
+        }
+      }
+      document.addEventListener("keydown", callback);
+      return () => document.addEventListener("keydown", callback);
+    },
+    [onSearch]
+  );
+
   return (
     <section className="lg:w-4/6 md:w-3/6 sm:w-2/6 ssm:w-3/6">
       <input
@@ -38,6 +57,7 @@ export function Search({ onSearch, search }) {
         value={search}
         placeholder="Search movies"
         className="bg-blue-200 text-black border rounded-lg w-full text-sm border-gray-300 p-1"
+        ref={inputEl}
       />
     </section>
   );

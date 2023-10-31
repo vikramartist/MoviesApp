@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 import SelectedListOfItems from "./Components/List";
 import Loading from "./Components/Loading";
 import ErrorMessage from "./Components/ErrorMessage";
+import { useLocalStorageState } from "./useLocalStorageState";
 
 const KEY = import.meta.env.VITE_API_KEY;
 
@@ -15,13 +16,7 @@ function App() {
   const [selectCart, setSelectCart] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [watched, setWatched] = useState(
-    JSON.parse(localStorage.getItem("watchedMovies"))
-  );
-
-  useEffect(() => {
-    localStorage.setItem("watchedMovies", JSON.stringify(watched));
-  }, [watched]);
+  const [watched, setWatched] = useLocalStorageState([], "watched");
 
   useEffect(
     function () {

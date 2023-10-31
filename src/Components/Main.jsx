@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
+import { useKey } from "../useKey";
 
 /* eslint-disable react/prop-types */
 const Main = ({ movies, isCartSelected, onWatched, watched, api }) => {
@@ -105,21 +106,7 @@ export function SideBar({
     closeMovie();
   };
 
-  useEffect(
-    function () {
-      function callback(e) {
-        if (e.code === "Escape") {
-          closeMovie();
-        }
-      }
-      document.addEventListener("keydown", callback);
-
-      return function () {
-        document.removeEventListener("keydown", callback);
-      };
-    },
-    [closeMovie]
-  );
+  useKey("Escape", closeMovie);
 
   useEffect(
     function () {
