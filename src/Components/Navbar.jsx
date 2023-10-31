@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useKey } from "../useKey";
 
 /* eslint-disable react/prop-types */
 const Navbar = ({ onSearch, count, onSelectCart, search, listCount }) => {
@@ -32,20 +33,12 @@ export function Logo() {
 export function Search({ onSearch, search }) {
   const inputEl = useRef(null);
 
-  useEffect(
-    function () {
-      function callback(e) {
-        if (document.activeElement === inputEl.current) return;
-        if (e.code === "Enter") {
-          inputEl.current.focus();
-          onSearch("");
-        }
-      }
-      document.addEventListener("keydown", callback);
-      return () => document.addEventListener("keydown", callback);
-    },
-    [onSearch]
-  );
+  useKey("Enter", function () {
+    if (document.activeElement === inputEl.current) return;
+
+    inputEl.current.focus();
+    onSearch("");
+  });
 
   return (
     <section className="lg:w-4/6 md:w-3/6 sm:w-2/6 ssm:w-3/6">
